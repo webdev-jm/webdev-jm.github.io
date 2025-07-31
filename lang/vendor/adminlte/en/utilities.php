@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'search'            => 'Search',
+    'name'              => 'Name',
+    'email'             => 'Email',
+    'type'              => 'Type',
+    'back'              => 'Back',
+    'view'              => 'View',
+    'edit'              => 'Edit',
+    'delete'            => 'Delete',
+    'save'              => 'Save',
+    'submit'            => 'Submit',
+    'details'           => 'Details',
+    'required'          => 'Required',
+    'settings'          => 'Settings',
+    'status'            => 'status',
+    'offline'           => 'Offline',
+    'online'            => 'Online',
+    'created_at'        => 'Created at',
+    'updated_at'        => 'Updated at',
+    'system_settings'   => 'System Settings',
+    'data_per_page'     => 'Data per page',
+    'email_sending'     => 'Email sending',
+    'save_settings'     => 'Save Settings',
+];
