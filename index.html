@@ -11,7 +11,7 @@
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
             rel="stylesheet"
         />
-        <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/lucide.min.js"></script>
+        <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
         <style>
             body {
                 font-family: "Inter", sans-serif;
@@ -20,12 +20,10 @@
             html {
                 scroll-behavior: smooth;
             }
-            /* Style for Lucide icons */
             .icon {
                 display: inline-block;
                 vertical-align: middle;
             }
-            /* Base styles for the fade-in animation */
             .fade-in-section {
                 opacity: 0;
                 transform: translateY(30px);
@@ -36,6 +34,16 @@
             .fade-in-section.is-visible {
                 opacity: 1;
                 transform: translateY(0);
+            }
+
+            /* New CSS to hide the scrollbar */
+            #projects-carousel::-webkit-scrollbar {
+                display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+            }
+
+            #projects-carousel {
+                -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+                scrollbar-width: none; /* Hide scrollbar for Firefox */
             }
         </style>
     </head>
@@ -409,10 +417,10 @@
                             class="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition-colors duration-300 font-medium"
                         >
                             <i class="icon" data-lucide="mail"></i>
-                            <span>your.email@example.com</span>
+                            <span>mr.michaelrenon@gmail.com</span>
                         </a>
                         <a
-                            href="https://github.com/your-username"
+                            href="https://github.com/webdev-jm"
                             target="_blank"
                             class="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition-colors duration-300 font-medium"
                         >
@@ -420,7 +428,7 @@
                             <span>GitHub</span>
                         </a>
                         <a
-                            href="https://linkedin.com/in/your-username"
+                            href="#"
                             target="_blank"
                             class="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition-colors duration-300 font-medium"
                         >
@@ -436,7 +444,7 @@
             class="bg-gray-900 py-6 text-center text-gray-500 border-t border-gray-800"
         >
             <div class="container mx-auto px-4">
-                <p>&copy; 2024 Your Name. All rights reserved.</p>
+                <p>&copy; 2025 John Michael Reñon. All rights reserved.</p>
             </div>
         </footer>
 
@@ -469,8 +477,6 @@
             fadeInSections.forEach((section) => {
                 observer.observe(section);
             });
-
-            lucide.createIcons();
 
             // Carousel script
             const carousel = document.getElementById("projects-carousel");
