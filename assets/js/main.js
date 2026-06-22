@@ -64,6 +64,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    const projectsViewMore = document.getElementById('projects-view-more');
+    const extraProjects = document.querySelectorAll('.project-extra');
+    if (projectsViewMore && extraProjects.length) {
+        const label = projectsViewMore.querySelector('span');
+        const chevron = projectsViewMore.querySelector('svg');
+
+        projectsViewMore.addEventListener('click', () => {
+            const expanding = projectsViewMore.dataset.expanded !== 'true';
+
+            extraProjects.forEach((el) => {
+                if (expanding) {
+                    el.classList.remove('hidden');
+                    requestAnimationFrame(() => el.classList.add('is-visible'));
+                } else {
+                    el.classList.add('hidden');
+                    el.classList.remove('is-visible');
+                }
+            });
+
+            projectsViewMore.dataset.expanded = expanding ? 'true' : 'false';
+            label.textContent = expanding ? 'View Less' : 'View More';
+            chevron.classList.toggle('rotate-180', expanding);
+        });
+    }
+
     const yearEl = document.getElementById('year');
     if (yearEl) {
         yearEl.textContent = new Date().getFullYear();
