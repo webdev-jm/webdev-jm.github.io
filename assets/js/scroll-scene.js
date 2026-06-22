@@ -97,6 +97,8 @@ if (canvas && !prefersReducedMotion) {
     const botGroup = new THREE.Group();
     scene.add(botGroup);
 
+    let botModel = null;
+
     new OBJLoader().load(
         modelBase + 'sphere-bot.obj',
         (object) => {
@@ -118,6 +120,7 @@ if (canvas && !prefersReducedMotion) {
             object.position.set(0, -1, 0);
             botGroup.add(object);
             botGroup.scale.setScalar(1.6);
+            botModel = object;
         },
         undefined,
         (error) => console.error('Failed to load sphere-bot model', error)
@@ -154,6 +157,11 @@ if (canvas && !prefersReducedMotion) {
 
         botGroup.rotation.y = elapsed * 0.18 + scrollProgress * Math.PI * 2;
         botGroup.rotation.x = Math.sin(elapsed * 0.15) * 0.05 + scrollProgress * 0.4;
+
+        if (botModel) {
+            const breath = 1 + Math.sin(elapsed * 0.6) * 0.035;
+            botModel.scale.setScalar(breath);
+        }
 
         fadeMaterials.forEach((material) => {
             material.opacity += (1 - material.opacity) * 0.04;
