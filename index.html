@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>John Michael Reñon — Web Developer</title>
         <meta name="description" content="Portfolio of John Michael Reñon, a web developer specializing in PHP, Laravel and MySQL." />
+        <link rel="icon" type="image/png" href="assets/logo/favicon.png" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,7 +33,8 @@
         <script type="importmap">
             {
                 "imports": {
-                    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+                    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+                    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
                 }
             }
         </script>
@@ -42,7 +44,9 @@
 
         <header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-ink/70 border-b border-white/5">
             <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-                <a href="#hero" class="font-display text-lg font-semibold text-white tracking-tight">JR<span class="text-indigo-400">.</span></a>
+                <a href="#hero" class="flex items-center gap-2">
+                    <img src="assets/logo/jm-monogram.png" alt="JM" class="h-8 w-auto" />
+                </a>
 
                 <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
                     <li><a href="#about" data-section="about" class="nav-link text-slate-400 hover:text-white transition-colors">About</a></li>
@@ -75,23 +79,25 @@
         <main>
             <section id="hero" class="relative min-h-screen flex items-center">
                 <div class="relative max-w-6xl mx-auto px-6 py-32 w-full">
-                    <p class="inline-flex items-center gap-2 rounded-full border border-indigo-400/30 bg-indigo-500/10 px-4 py-1.5 text-xs font-medium text-indigo-300 mb-6">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                        Open to new opportunities
-                    </p>
+                    <div class="max-w-2xl rounded-3xl border border-white/10 bg-ink/60 backdrop-blur-xl p-8 sm:p-10">
+                        <p class="inline-flex items-center gap-2 rounded-full border border-indigo-400/30 bg-indigo-500/10 px-4 py-1.5 text-xs font-medium text-indigo-300 mb-6">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            Open to new opportunities
+                        </p>
 
-                    <h1 class="font-display text-4xl sm:text-6xl font-semibold text-white leading-tight max-w-3xl">
-                        Hi, I'm <span class="gradient-text">John Michael Reñon</span>
-                    </h1>
-                    <p class="mt-4 text-xl sm:text-2xl text-slate-300 font-display">Web Developer</p>
+                        <h1 class="font-display text-4xl sm:text-6xl font-semibold text-white leading-tight">
+                            Hi, I'm <span class="gradient-text">John Michael Reñon</span>
+                        </h1>
+                        <p class="mt-4 text-xl sm:text-2xl text-slate-300 font-display">Web Developer</p>
 
-                    <p class="mt-6 max-w-xl text-slate-400 leading-relaxed">
-                        I build reliable web applications with PHP, Laravel and MySQL — and I'm always looking to grow my skills and take on new challenges in information technology.
-                    </p>
+                        <p class="mt-6 text-slate-400 leading-relaxed">
+                            I build reliable web applications with PHP, Laravel and MySQL — and I'm always looking to grow my skills and take on new challenges in information technology.
+                        </p>
 
-                    <div class="mt-10 flex flex-wrap gap-4">
-                        <a href="#projects" class="rounded-full bg-indigo-500 hover:bg-indigo-400 text-white px-6 py-3 font-medium transition-colors">View My Work</a>
-                        <a href="#contact" class="rounded-full border border-white/15 hover:border-white/40 text-white px-6 py-3 font-medium transition-colors">Get In Touch</a>
+                        <div class="mt-10 flex flex-wrap gap-4">
+                            <a href="#projects" class="rounded-full bg-indigo-500 hover:bg-indigo-400 text-white px-6 py-3 font-medium transition-colors">View My Work</a>
+                            <a href="#contact" class="rounded-full border border-white/15 hover:border-white/40 text-white px-6 py-3 font-medium transition-colors">Get In Touch</a>
+                        </div>
                     </div>
                 </div>
 
@@ -103,7 +109,7 @@
             </section>
 
             <section id="about" class="py-28 px-6 max-w-6xl mx-auto">
-                <div class="grid md:grid-cols-[280px_1fr] gap-14 items-start">
+                <div class="grid md:grid-cols-[280px_1fr] gap-14 items-start rounded-3xl border border-white/10 bg-ink/60 backdrop-blur-xl p-8 sm:p-12">
                     <div class="reveal flex justify-center md:justify-start">
                         <div class="relative w-56 h-56">
                             <div class="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rotate-6 opacity-30 blur-xl"></div>
@@ -189,6 +195,7 @@
             </section>
 
             <section id="skills" class="py-28 px-6 max-w-6xl mx-auto">
+                <div class="rounded-3xl border border-white/10 bg-ink/60 backdrop-blur-xl p-8 sm:p-12">
                 <div class="reveal max-w-2xl mb-14">
                     <p class="text-sm font-semibold uppercase tracking-widest text-indigo-400 mb-3">Skills &amp; Tools</p>
                     <h2 class="font-display text-3xl font-semibold text-white">What I work with day to day.</h2>
@@ -248,9 +255,11 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </section>
 
             <section id="experience" class="py-28 px-6 max-w-6xl mx-auto">
+                <div class="rounded-3xl border border-white/10 bg-ink/60 backdrop-blur-xl p-8 sm:p-12">
                 <div class="reveal max-w-2xl mb-14">
                     <p class="text-sm font-semibold uppercase tracking-widest text-indigo-400 mb-3">Experience</p>
                     <h2 class="font-display text-3xl font-semibold text-white">Where I've put these skills to work.</h2>
@@ -280,9 +289,11 @@
                         </ul>
                     </div>
                 </div>
+                </div>
             </section>
 
             <section id="projects" class="py-28 px-6 max-w-6xl mx-auto">
+                <div class="rounded-3xl border border-white/10 bg-ink/60 backdrop-blur-xl p-8 sm:p-12">
                 <div class="reveal max-w-2xl mb-14">
                     <p class="text-sm font-semibold uppercase tracking-widest text-indigo-400 mb-3">Selected Work</p>
                     <h2 class="font-display text-3xl font-semibold text-white">The ecosystem I'm building at BEVI.</h2>
@@ -403,9 +414,11 @@
                         <p class="text-xs text-slate-500">Internal system · BEVI</p>
                     </article>
                 </div>
+                </div>
             </section>
 
             <section id="education" class="py-28 px-6 max-w-6xl mx-auto">
+                <div class="rounded-3xl border border-white/10 bg-ink/60 backdrop-blur-xl p-8 sm:p-12">
                 <div class="reveal max-w-2xl mb-14">
                     <p class="text-sm font-semibold uppercase tracking-widest text-indigo-400 mb-3">Education &amp; Certification</p>
                     <h2 class="font-display text-3xl font-semibold text-white">Where the foundation was built.</h2>
@@ -438,10 +451,11 @@
                         </p>
                     </div>
                 </div>
+                </div>
             </section>
 
             <section id="contact" class="py-28 px-6 max-w-6xl mx-auto">
-                <div class="reveal rounded-3xl border border-white/10 bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 p-10 sm:p-14 text-center">
+                <div class="reveal rounded-3xl border border-white/10 bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 backdrop-blur-xl p-10 sm:p-14 text-center">
                     <p class="text-sm font-semibold uppercase tracking-widest text-indigo-400 mb-3">Get In Touch</p>
                     <h2 class="font-display text-3xl sm:text-4xl font-semibold text-white mb-4">Let's build something together.</h2>
                     <p class="text-slate-400 max-w-xl mx-auto mb-10">
