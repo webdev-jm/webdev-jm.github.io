@@ -297,119 +297,292 @@
                     <h2 class="font-display text-3xl font-semibold text-white">The ecosystem I'm building at BEVI.</h2>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-6">
-                    <article class="reveal group rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-indigo-400/40 hover:-translate-y-1 transition-all duration-300">
-                        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center mb-5">
-                            <svg class="w-6 h-6 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
-                            </svg>
+                <div class="space-y-6">
+                    <article class="reveal rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 hover:border-indigo-400/40 transition-colors duration-300">
+                        <div class="flex items-start justify-between gap-4 flex-wrap mb-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-display text-lg font-semibold text-white">BEVI Hub</h3>
+                                    <p class="text-xs text-slate-500 mt-0.5">Internal system · BEVI</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tech-tag">Laravel 12</span>
+                                <span class="tech-tag">Livewire 4</span>
+                                <span class="tech-tag">Passport</span>
+                                <span class="tech-tag">Reverb</span>
+                            </div>
                         </div>
-                        <h3 class="font-display text-lg font-semibold text-white mb-2">BEVI Hub</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-5">
-                            The centralized SSO and operations hub for the company — OAuth2 provider, ticket management, push notifications, and real-time updates across every connected app.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-2">
-                            <span class="tech-tag">Laravel 12</span>
-                            <span class="tech-tag">Livewire 4</span>
-                            <span class="tech-tag">Passport</span>
-                            <span class="tech-tag">Reverb</span>
+
+                        <div class="grid sm:grid-cols-2 gap-5 text-sm">
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">The Problem</p>
+                                <p class="text-slate-400 leading-relaxed">Every internal app had its own login, and issues got reported through scattered chats and emails with no shared view of what was urgent or who owned it.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">My Approach</p>
+                                <p class="text-slate-400 leading-relaxed">Built one central login that every other internal app connects to, plus a ticketing system that automatically works out how urgent an issue is and routes it to the right team, instead of someone deciding that by hand.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">Decision I'm Proud Of</p>
+                                <p class="text-slate-400 leading-relaxed">Made ticket updates show up for responders instantly instead of needing a refresh, and made sure that if an app sends the same update twice — say, after a network hiccup — it never gets applied twice.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">The Outcome</p>
+                                <p class="text-slate-400 leading-relaxed">Every connected app — sales, auctions, meetings, the knowledge assistant — now shares one login, and issues get tracked and prioritized automatically instead of getting lost in chat.</p>
+                            </div>
                         </div>
-                        <p class="text-xs text-slate-500">Internal system · BEVI</p>
                     </article>
 
-                    <article class="reveal group rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-indigo-400/40 hover:-translate-y-1 transition-all duration-300">
-                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-5">
-                            <svg class="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
-                            </svg>
+                    <article class="reveal rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 hover:border-indigo-400/40 transition-colors duration-300">
+                        <div class="flex items-start justify-between gap-4 flex-wrap mb-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-display text-lg font-semibold text-white">hub-auth-client</h3>
+                                    <p class="text-xs text-slate-500 mt-0.5">Composer package · BEVI</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tech-tag">PHP Package</span>
+                                <span class="tech-tag">Socialite</span>
+                                <span class="tech-tag">Guzzle</span>
+                            </div>
                         </div>
-                        <h3 class="font-display text-lg font-semibold text-white mb-2">hub-auth-client</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-5">
-                            An open internal Composer package: a drop-in OAuth2 SSO client that connects any Laravel app — 8 through 12 — to the BEVI Hub with a few lines of config.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-2">
-                            <span class="tech-tag">PHP Package</span>
-                            <span class="tech-tag">Socialite</span>
-                            <span class="tech-tag">Guzzle</span>
+
+                        <div class="grid sm:grid-cols-2 gap-5 text-sm">
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">The Problem</p>
+                                <p class="text-slate-400 leading-relaxed">Every new internal app needed its own login system built from scratch, repeated across apps that run on five different versions of the same framework.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">My Approach</p>
+                                <p class="text-slate-400 leading-relaxed">Packaged the login connection into a reusable plug-in: any app can connect to BEVI Hub by adding one database column, a few settings, and a login button — no custom integration work needed.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">Decision I'm Proud Of</p>
+                                <p class="text-slate-400 leading-relaxed">Built in automatic handling for three real situations: someone logging back in, someone who already had an account under that email, and someone signing in for the first time — and let each app customize that part without touching the login logic itself.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">The Outcome</p>
+                                <p class="text-slate-400 leading-relaxed">Four production apps now share one login package instead of four separate logins, and connecting a new app takes minutes instead of days.</p>
+                            </div>
                         </div>
-                        <p class="text-xs text-slate-500">Composer package · BEVI</p>
                     </article>
 
-                    <article class="reveal group rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-indigo-400/40 hover:-translate-y-1 transition-all duration-300">
-                        <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center mb-5">
-                            <svg class="w-6 h-6 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
-                            </svg>
+                    <article class="reveal rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 hover:border-indigo-400/40 transition-colors duration-300">
+                        <div class="flex items-start justify-between gap-4 flex-wrap mb-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-display text-lg font-semibold text-white">One Portal (STO Online)</h3>
+                                    <p class="text-xs text-slate-500 mt-0.5">Internal system · BEVI</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tech-tag">Laravel 10</span>
+                                <span class="tech-tag">Livewire</span>
+                                <span class="tech-tag">Gemini / OpenAI</span>
+                                <span class="tech-tag">ECharts</span>
+                            </div>
                         </div>
-                        <h3 class="font-display text-lg font-semibold text-white mb-2">One Portal (STO Online)</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-5">
-                            A sales &amp; inventory order management platform with AI-assisted data extraction from uploaded files and sales performance dashboards with trend mapping.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-2">
-                            <span class="tech-tag">Laravel 10</span>
-                            <span class="tech-tag">Livewire</span>
-                            <span class="tech-tag">Gemini / OpenAI</span>
-                            <span class="tech-tag">ECharts</span>
+
+                        <div class="grid sm:grid-cols-2 gap-5 text-sm">
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">The Problem</p>
+                                <p class="text-slate-400 leading-relaxed">Each client keeps its own separate set of records, and the monthly sales files they send in don't follow one consistent format — column names and product/customer codes vary and don't always match what's on file.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">My Approach</p>
+                                <p class="text-slate-400 leading-relaxed">Built a configurable import step that adapts to each client's spreadsheet layout, checks every row against our customer and product records and the source pricing, and points out exactly which rows have a problem instead of rejecting the whole file.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">Decision I'm Proud Of</p>
+                                <p class="text-slate-400 leading-relaxed">Large imports run in the background instead of making someone wait, and get split into manageable batches so they don't overload the database. For AI-generated dashboard insights across many client accounts, I summarize each account on its own first, then combine those summaries into one overview — instead of trying to feed everything to the AI at once.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">The Outcome</p>
+                                <p class="text-slate-400 leading-relaxed">Sales uploads went from a manual cleanup job to a self-service flow that catches mismatched records before they ever reach the database, with trend dashboards and AI-generated summaries built on top of the same process.</p>
+                            </div>
                         </div>
-                        <p class="text-xs text-slate-500">Internal system · BEVI</p>
                     </article>
 
-                    <article class="reveal group rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-indigo-400/40 hover:-translate-y-1 transition-all duration-300">
-                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-5">
-                            <svg class="w-6 h-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.456-2.456L14.25 6l1.035-.259a3.375 3.375 0 002.456-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
-                            </svg>
+                    <article class="reveal rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 hover:border-indigo-400/40 transition-colors duration-300">
+                        <div class="flex items-start justify-between gap-4 flex-wrap mb-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.456-2.456L14.25 6l1.035-.259a3.375 3.375 0 002.456-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-display text-lg font-semibold text-white">RAG-AI Knowledge Assistant</h3>
+                                    <p class="text-xs text-slate-500 mt-0.5">Internal system · BEVI</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tech-tag">Laravel 12</span>
+                                <span class="tech-tag">laravel/ai</span>
+                                <span class="tech-tag">Embeddings</span>
+                                <span class="tech-tag">Reverb</span>
+                            </div>
                         </div>
-                        <h3 class="font-display text-lg font-semibold text-white mb-2">RAG-AI Knowledge Assistant</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-5">
-                            An internal knowledge base and AI chat system built on Laravel's AI SDK, using OpenAI embeddings and similarity search to answer questions from company documents.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-2">
-                            <span class="tech-tag">Laravel 12</span>
-                            <span class="tech-tag">laravel/ai</span>
-                            <span class="tech-tag">Embeddings</span>
-                            <span class="tech-tag">Reverb</span>
+
+                        <div class="grid sm:grid-cols-2 gap-5 text-sm">
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">The Problem</p>
+                                <p class="text-slate-400 leading-relaxed">Company knowledge — articles, FAQs, manuals, notes — was scattered across documents, with no way for an AI assistant to actually search through it and answer questions accurately.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">My Approach</p>
+                                <p class="text-slate-400 leading-relaxed">Built a knowledge base that breaks documents into small pieces, and gave the chat assistant a way to search those pieces for the ones most relevant to a question before it answers.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">Decision I'm Proud Of</p>
+                                <p class="text-slate-400 leading-relaxed">Did the matching directly in the app's own code instead of adding a whole separate specialized database for it — a trade-off that won't scale to millions of documents, but for a company knowledge base it's plenty fast and one less system to maintain.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">The Outcome</p>
+                                <p class="text-slate-400 leading-relaxed">The chat assistant answers from the company's actual documents instead of guessing from general knowledge, and non-technical staff can keep those documents up to date themselves through a simple admin screen.</p>
+                            </div>
                         </div>
-                        <p class="text-xs text-slate-500">Internal system · BEVI</p>
                     </article>
 
-                    <article class="reveal group rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-indigo-400/40 hover:-translate-y-1 transition-all duration-300">
-                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center mb-5">
-                            <svg class="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
-                            </svg>
+                    <article class="reveal rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 hover:border-indigo-400/40 transition-colors duration-300">
+                        <div class="flex items-start justify-between gap-4 flex-wrap mb-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-display text-lg font-semibold text-white">Online Auction Platform</h3>
+                                    <p class="text-xs text-slate-500 mt-0.5">Internal system · BEVI</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tech-tag">Laravel 10</span>
+                                <span class="tech-tag">Livewire 3</span>
+                                <span class="tech-tag">Barcode</span>
+                                <span class="tech-tag">DomPDF</span>
+                            </div>
                         </div>
-                        <h3 class="font-display text-lg font-semibold text-white mb-2">Online Auction Platform</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-5">
-                            A bidding platform for item lots with barcode-based tracking, live bid status, and PDF/Excel reporting for buyers and administrators.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-2">
-                            <span class="tech-tag">Laravel 10</span>
-                            <span class="tech-tag">Livewire 3</span>
-                            <span class="tech-tag">Barcode</span>
-                            <span class="tech-tag">DomPDF</span>
+
+                        <div class="grid sm:grid-cols-2 gap-5 text-sm">
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">The Problem</p>
+                                <p class="text-slate-400 leading-relaxed">Old laptops, phones, and other unused equipment kept piling up in storage with no good way to clear them out.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">My Approach</p>
+                                <p class="text-slate-400 leading-relaxed">Built a bidding app where every physical item gets its own QR code, and the page updates live to show the current highest bid without anyone needing to refresh.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">Decision I'm Proud Of</p>
+                                <p class="text-slate-400 leading-relaxed">Kept the bidding logic simple by letting the server handle bids one at a time naturally, and always working out the winner fresh from the full bid history instead of tracking "who's winning" as a separate value that could drift out of sync.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">The Outcome</p>
+                                <p class="text-slate-400 leading-relaxed">Each auction now closes out with ready-made Excel and PDF reports for buyers and admins, with a full history of every bid — no more manual spreadsheet tallying.</p>
+                            </div>
                         </div>
-                        <p class="text-xs text-slate-500">Internal system · BEVI</p>
                     </article>
 
-                    <article class="reveal group rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-indigo-400/40 hover:-translate-y-1 transition-all duration-300">
-                        <div class="w-12 h-12 rounded-xl bg-sky-500/10 flex items-center justify-center mb-5">
-                            <svg class="w-6 h-6 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75M3.75 4.5h16.5c.621 0 1.125.504 1.125 1.125v13.75c0 .621-.504 1.125-1.125 1.125H3.75A1.125 1.125 0 012.625 19.375V5.625c0-.621.504-1.125 1.125-1.125z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 9.75h.75" />
-                            </svg>
+                    <article class="reveal rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 hover:border-indigo-400/40 transition-colors duration-300">
+                        <div class="flex items-start justify-between gap-4 flex-wrap mb-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-sky-500/10 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75M3.75 4.5h16.5c.621 0 1.125.504 1.125 1.125v13.75c0 .621-.504 1.125-1.125 1.125H3.75A1.125 1.125 0 012.625 19.375V5.625c0-.621.504-1.125 1.125-1.125z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 9.75h.75" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-display text-lg font-semibold text-white">Minutes of Meeting (MOM)</h3>
+                                    <p class="text-xs text-slate-500 mt-0.5">Internal system · BEVI</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tech-tag">Laravel 10</span>
+                                <span class="tech-tag">Livewire 3</span>
+                                <span class="tech-tag">DomPDF</span>
+                            </div>
                         </div>
-                        <h3 class="font-display text-lg font-semibold text-white mb-2">Minutes of Meeting (MOM)</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-5">
-                            Tracks meeting topics, discussion points, and action items, with one-click PDF export per meeting for distribution and recordkeeping.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-2">
-                            <span class="tech-tag">Laravel 10</span>
-                            <span class="tech-tag">Livewire 3</span>
-                            <span class="tech-tag">DomPDF</span>
+
+                        <div class="grid sm:grid-cols-2 gap-5 text-sm">
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">The Problem</p>
+                                <p class="text-slate-400 leading-relaxed">Meeting notes and action items lived in Word docs and email threads, with no consistent owner, due date, or way to tell whether something actually got done.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">My Approach</p>
+                                <p class="text-slate-400 leading-relaxed">Built an app that separates who attended a meeting from who's actually responsible for each follow-up, so every action item has a named owner and a due date — not just a mention in the notes.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">Decision I'm Proud Of</p>
+                                <p class="text-slate-400 leading-relaxed">Set up notifications that only go to the people who actually need them — when a meeting's posted, when you're assigned something, when something you own is marked done — and made the system automatically flag items as overdue once their due date passes.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">The Outcome</p>
+                                <p class="text-slate-400 leading-relaxed">Every meeting can be exported to PDF in one click, complete with a record of who created, approved, and updated it, and overdue action items show up automatically instead of someone having to chase them down.</p>
+                            </div>
                         </div>
-                        <p class="text-xs text-slate-500">Internal system · BEVI</p>
+                    </article>
+
+                    <article class="reveal rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 hover:border-indigo-400/40 transition-colors duration-300">
+                        <div class="flex items-start justify-between gap-4 flex-wrap mb-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-display text-lg font-semibold text-white">Sales Management System</h3>
+                                    <p class="text-xs text-slate-500 mt-0.5">Internal system · BEVI</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tech-tag">Laravel 10</span>
+                                <span class="tech-tag">Livewire 2</span>
+                                <span class="tech-tag">Spatie Permissions</span>
+                                <span class="tech-tag">Excel / PDF</span>
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-5 text-sm">
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">The Problem</p>
+                                <p class="text-slate-400 leading-relaxed">Field sales reps needed a way to book customer orders that would flow straight into the company's order-processing system, with no record of whether they'd actually visited the branch they were reporting on, and a real risk of losing an order if a shaky internet connection dropped mid-entry.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">My Approach</p>
+                                <p class="text-slate-400 leading-relaxed">Built a system where reps sign in to a specific customer and branch — capturing their location so the visit is verified — enter orders that get pushed through automatically, and submit monthly visit plans and weekly reports covering what they did and how collections are tracking, all routed to their manager for approval.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">Decision I'm Proud Of</p>
+                                <p class="text-slate-400 leading-relaxed">Reps are often out in the field on unreliable mobile signal, so the order form saves itself in the background every few seconds and lets reps save a part-finished order as a draft — instead of losing an entry if the connection drops partway through.</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1.5">The Outcome</p>
+                                <p class="text-slate-400 leading-relaxed">What started as a way to get field orders processed without losing data has grown, over four years and 490+ released updates, into the company's main platform for sales orders, visit planning, and field reporting — including a self-service way to match big retail partners' own store and product codes to the company's internal ones.</p>
+                            </div>
+                        </div>
                     </article>
                 </div>
                 </div>
