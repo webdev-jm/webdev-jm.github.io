@@ -38,6 +38,8 @@
         </script>
     </head>
     <body class="bg-ink text-slate-200 font-sans antialiased">
+        <canvas id="bg-canvas" class="fixed inset-0 -z-10 w-full h-full pointer-events-none"></canvas>
+
         <header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-ink/70 border-b border-white/5">
             <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
                 <a href="#hero" class="font-display text-lg font-semibold text-white tracking-tight">JR<span class="text-indigo-400">.</span></a>
@@ -71,10 +73,7 @@
         </header>
 
         <main>
-            <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
-                <canvas id="hero-canvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-80"></canvas>
-                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink pointer-events-none"></div>
-
+            <section id="hero" class="relative min-h-screen flex items-center">
                 <div class="relative max-w-6xl mx-auto px-6 py-32 w-full">
                     <p class="inline-flex items-center gap-2 rounded-full border border-indigo-400/30 bg-indigo-500/10 px-4 py-1.5 text-xs font-medium text-indigo-300 mb-6">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -125,12 +124,27 @@
                             systems to customer-facing tools. My background is in Information Technology with a focus on
                             database management, and I've spent my career strengthening that foundation with PHP, Laravel and MySQL.
                         </p>
+                        <p class="text-slate-400 leading-relaxed mb-4">
+                            These days I'm at <span class="text-slate-200 font-medium">BEVI (Beauty Elements Ventures Inc.)</span>,
+                            building and maintaining a connected ecosystem of internal Laravel apps: a centralized SSO hub with
+                            its own OAuth2 client package, a sales &amp; inventory platform, an AI-powered knowledge assistant,
+                            an auction system, and a meeting-tracker — all sharing the same authentication backbone.
+                        </p>
                         <p class="text-slate-400 leading-relaxed mb-8">
                             I'm a fast learner and a team player who's always looking for the next skill worth picking up,
-                            whether that's a new framework, a better workflow, or simply a cleaner way to solve a problem.
+                            whether that's a new framework, a better workflow, or — lately — Three.js.
                         </p>
 
                         <dl class="grid sm:grid-cols-2 gap-4 text-sm">
+                            <div class="flex items-start gap-3">
+                                <svg class="w-5 h-5 mt-0.5 text-indigo-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18a48.057 48.057 0 01-9.256 0c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m12-2.402V9.5a4.5 4.5 0 00-2.25-3.9M3.75 11.748V9.5a4.5 4.5 0 012.25-3.9m0 0a48.27 48.27 0 0112 0M5.25 5.6c1.354-.353 3.062-.6 4.75-.6 1.688 0 3.396.247 4.75.6m-9.5 0a4.5 4.5 0 00-2.25 3.9" />
+                                </svg>
+                                <div>
+                                    <dt class="text-slate-500">Currently</dt>
+                                    <dd class="text-slate-200">Web Developer @ BEVI</dd>
+                                </div>
+                            </div>
                             <div class="flex items-start gap-3">
                                 <svg class="w-5 h-5 mt-0.5 text-indigo-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -180,43 +194,57 @@
                     <h2 class="font-display text-3xl font-semibold text-white">What I work with day to day.</h2>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-6">
+                <div class="grid md:grid-cols-2 gap-6">
                     <div class="reveal rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-                        <h3 class="font-display text-lg font-semibold text-white mb-4">Languages &amp; Frameworks</h3>
+                        <h3 class="font-display text-lg font-semibold text-white mb-4">Backend &amp; Frameworks</h3>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-pill">PHP</span>
-                            <span class="skill-pill">Laravel</span>
-                            <span class="skill-pill">HTML5</span>
-                            <span class="skill-pill">CSS3</span>
-                            <span class="skill-pill">JavaScript</span>
-                            <span class="skill-pill">jQuery</span>
-                            <span class="skill-pill">AJAX</span>
+                            <span class="skill-pill">Laravel 8–12</span>
+                            <span class="skill-pill">Livewire 3/4</span>
+                            <span class="skill-pill">Sanctum</span>
+                            <span class="skill-pill">Passport</span>
+                            <span class="skill-pill">Socialite</span>
+                            <span class="skill-pill">Laravel AI SDK</span>
+                            <span class="skill-pill">Reverb / Echo</span>
+                            <span class="skill-pill">Pulse</span>
                         </div>
                     </div>
 
                     <div class="reveal rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-                        <h3 class="font-display text-lg font-semibold text-white mb-4">Tools &amp; Platforms</h3>
+                        <h3 class="font-display text-lg font-semibold text-white mb-4">Frontend &amp; Interactive</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill">Tailwind CSS</span>
+                            <span class="skill-pill">Three.js</span>
+                            <span class="skill-pill">Vite</span>
+                            <span class="skill-pill">Bootstrap</span>
+                            <span class="skill-pill">JavaScript</span>
+                            <span class="skill-pill">jQuery / AJAX</span>
+                            <span class="skill-pill">ApexCharts / ECharts</span>
+                        </div>
+                    </div>
+
+                    <div class="reveal rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+                        <h3 class="font-display text-lg font-semibold text-white mb-4">Data, AI &amp; Integrations</h3>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-pill">MySQL</span>
-                            <span class="skill-pill">Bootstrap</span>
-                            <span class="skill-pill">GitHub</span>
-                            <span class="skill-pill">cPanel</span>
-                        </div>
-                        <h3 class="font-display text-lg font-semibold text-white mb-4 mt-6">Concepts</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="skill-pill">Relational Databases</span>
-                            <span class="skill-pill">SEO</span>
-                            <span class="skill-pill">Progressive Web Apps</span>
+                            <span class="skill-pill">Redis</span>
+                            <span class="skill-pill">OpenAI / Gemini APIs</span>
+                            <span class="skill-pill">Embeddings &amp; RAG</span>
+                            <span class="skill-pill">Excel / PDF Pipelines</span>
+                            <span class="skill-pill">Relational Database Design</span>
                         </div>
                     </div>
 
                     <div class="reveal rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-                        <h3 class="font-display text-lg font-semibold text-white mb-4">Strengths</h3>
+                        <h3 class="font-display text-lg font-semibold text-white mb-4">Practices &amp; Strengths</h3>
                         <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill">Package Authoring</span>
+                            <span class="skill-pill">Pest / PHPUnit</span>
+                            <span class="skill-pill">Git &amp; GitHub</span>
+                            <span class="skill-pill">SEO</span>
+                            <span class="skill-pill">PWA</span>
                             <span class="skill-pill">Fast Learner</span>
                             <span class="skill-pill">Team Player</span>
-                            <span class="skill-pill">Troubleshooting</span>
-                            <span class="skill-pill">Photo Editing</span>
                         </div>
                     </div>
                 </div>
@@ -228,80 +256,151 @@
                     <h2 class="font-display text-3xl font-semibold text-white">Where I've put these skills to work.</h2>
                 </div>
 
-                <div class="reveal relative pl-10 border-l border-white/10">
-                    <span class="absolute left-0 top-1.5 -translate-x-1/2 w-3 h-3 rounded-full bg-indigo-400 ring-4 ring-indigo-400/20"></span>
-                    <p class="text-sm text-slate-500 mb-1">May 2019 — June 2021</p>
-                    <h3 class="font-display text-xl font-semibold text-white">Web Developer · SocialConz Digital</h3>
-                    <ul class="mt-4 space-y-2 text-slate-400 leading-relaxed list-disc list-inside">
-                        <li>Built and maintained full-stack business systems including a Property Management System, an Inventory Management System, and a Customer Relationship Management (CRM) platform.</li>
-                        <li>Worked across the stack with PHP, Laravel and MySQL, using jQuery/AJAX for dynamic, responsive interfaces.</li>
-                        <li>Styled and structured interfaces with HTML, CSS and Bootstrap, and handled day-to-day deployment via cPanel.</li>
-                    </ul>
+                <div class="space-y-12">
+                    <div class="reveal relative pl-10 border-l border-white/10">
+                        <span class="absolute left-0 top-1.5 -translate-x-1/2 w-3 h-3 rounded-full bg-emerald-400 ring-4 ring-emerald-400/20"></span>
+                        <p class="text-sm text-slate-500 mb-1">April 2022 — Present</p>
+                        <h3 class="font-display text-xl font-semibold text-white">Web Developer · BEVI (Beauty Elements Ventures Inc.)</h3>
+                        <ul class="mt-4 space-y-2 text-slate-400 leading-relaxed list-disc list-inside">
+                            <li>Build and maintain a connected ecosystem of internal Laravel applications, including a centralized SSO/operations hub, a sales &amp; inventory platform, an AI knowledge assistant, an auction system, and a meeting-tracking tool.</li>
+                            <li>Authored and published <span class="text-slate-200">hub-auth-client</span>, a reusable OAuth2 SSO package supporting Laravel 8 through 12 across every app in the ecosystem.</li>
+                            <li>Integrate AI features — OpenAI, Google Gemini, and Laravel's AI SDK — for document parsing, knowledge search, and reporting.</li>
+                            <li>Work with real-time broadcasting (Reverb/Echo), Tailwind CSS, and Three.js to make internal tools feel less like internal tools.</li>
+                        </ul>
+                    </div>
+
+                    <div class="reveal relative pl-10 border-l border-white/10">
+                        <span class="absolute left-0 top-1.5 -translate-x-1/2 w-3 h-3 rounded-full bg-indigo-400 ring-4 ring-indigo-400/20"></span>
+                        <p class="text-sm text-slate-500 mb-1">May 2019 — June 2021</p>
+                        <h3 class="font-display text-xl font-semibold text-white">Web Developer · SocialConz Digital</h3>
+                        <ul class="mt-4 space-y-2 text-slate-400 leading-relaxed list-disc list-inside">
+                            <li>Built and maintained full-stack business systems including a Property Management System, an Inventory Management System, and a Customer Relationship Management (CRM) platform.</li>
+                            <li>Worked across the stack with PHP, Laravel and MySQL, using jQuery/AJAX for dynamic, responsive interfaces.</li>
+                            <li>Styled and structured interfaces with HTML, CSS and Bootstrap, and handled day-to-day deployment via cPanel.</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
 
             <section id="projects" class="py-28 px-6 max-w-6xl mx-auto">
                 <div class="reveal max-w-2xl mb-14">
                     <p class="text-sm font-semibold uppercase tracking-widest text-indigo-400 mb-3">Selected Work</p>
-                    <h2 class="font-display text-3xl font-semibold text-white">Systems I've helped build.</h2>
+                    <h2 class="font-display text-3xl font-semibold text-white">The ecosystem I'm building at BEVI.</h2>
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-6">
                     <article class="reveal group rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-indigo-400/40 hover:-translate-y-1 transition-all duration-300">
                         <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center mb-5">
                             <svg class="w-6 h-6 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
                             </svg>
                         </div>
-                        <h3 class="font-display text-lg font-semibold text-white mb-2">Property Management System</h3>
+                        <h3 class="font-display text-lg font-semibold text-white mb-2">BEVI Hub</h3>
                         <p class="text-slate-400 text-sm leading-relaxed mb-5">
-                            An admin dashboard for managing property profiles, day-to-day operations, customer service requests, and reporting across dozens of active properties.
+                            The centralized SSO and operations hub for the company — OAuth2 provider, ticket management, push notifications, and real-time updates across every connected app.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-2">
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">Laravel</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">Laravel 12</span>
+                            <span class="tech-tag">Livewire 4</span>
+                            <span class="tech-tag">Passport</span>
+                            <span class="tech-tag">Reverb</span>
                         </div>
-                        <p class="text-xs text-slate-500">Internal system · SocialConz Digital</p>
+                        <p class="text-xs text-slate-500">Internal system · BEVI</p>
                     </article>
 
                     <article class="reveal group rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-indigo-400/40 hover:-translate-y-1 transition-all duration-300">
                         <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-5">
                             <svg class="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
                             </svg>
                         </div>
-                        <h3 class="font-display text-lg font-semibold text-white mb-2">Inventory Management System</h3>
+                        <h3 class="font-display text-lg font-semibold text-white mb-2">hub-auth-client</h3>
                         <p class="text-slate-400 text-sm leading-relaxed mb-5">
-                            Tracks office supply inventory, stock levels and purchase orders month over month, alongside accounting modules for chart of accounts and cost tracking.
+                            An open internal Composer package: a drop-in OAuth2 SSO client that connects any Laravel app — 8 through 12 — to the BEVI Hub with a few lines of config.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-2">
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">jQuery / AJAX</span>
-                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">PHP Package</span>
+                            <span class="tech-tag">Socialite</span>
+                            <span class="tech-tag">Guzzle</span>
                         </div>
-                        <p class="text-xs text-slate-500">Internal system · SocialConz Digital</p>
+                        <p class="text-xs text-slate-500">Composer package · BEVI</p>
                     </article>
 
                     <article class="reveal group rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-indigo-400/40 hover:-translate-y-1 transition-all duration-300">
                         <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center mb-5">
                             <svg class="w-6 h-6 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
                             </svg>
                         </div>
-                        <h3 class="font-display text-lg font-semibold text-white mb-2">Customer Relationship Management</h3>
+                        <h3 class="font-display text-lg font-semibold text-white mb-2">One Portal (STO Online)</h3>
                         <p class="text-slate-400 text-sm leading-relaxed mb-5">
-                            Manages clients, events and client groups with dashboard analytics for segmentation, plus bulk email campaigns to thousands of contacts.
+                            A sales &amp; inventory order management platform with AI-assisted data extraction from uploaded files and sales performance dashboards with trend mapping.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-2">
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">Laravel</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">Laravel 10</span>
+                            <span class="tech-tag">Livewire</span>
+                            <span class="tech-tag">Gemini / OpenAI</span>
+                            <span class="tech-tag">ECharts</span>
                         </div>
-                        <p class="text-xs text-slate-500">Internal system · SocialConz Digital</p>
+                        <p class="text-xs text-slate-500">Internal system · BEVI</p>
+                    </article>
+
+                    <article class="reveal group rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-indigo-400/40 hover:-translate-y-1 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-5">
+                            <svg class="w-6 h-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.456-2.456L14.25 6l1.035-.259a3.375 3.375 0 002.456-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
+                            </svg>
+                        </div>
+                        <h3 class="font-display text-lg font-semibold text-white mb-2">RAG-AI Knowledge Assistant</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-5">
+                            An internal knowledge base and AI chat system built on Laravel's AI SDK, using OpenAI embeddings and similarity search to answer questions from company documents.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-2">
+                            <span class="tech-tag">Laravel 12</span>
+                            <span class="tech-tag">laravel/ai</span>
+                            <span class="tech-tag">Embeddings</span>
+                            <span class="tech-tag">Reverb</span>
+                        </div>
+                        <p class="text-xs text-slate-500">Internal system · BEVI</p>
+                    </article>
+
+                    <article class="reveal group rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-indigo-400/40 hover:-translate-y-1 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center mb-5">
+                            <svg class="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                            </svg>
+                        </div>
+                        <h3 class="font-display text-lg font-semibold text-white mb-2">Online Auction Platform</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-5">
+                            A bidding platform for item lots with barcode-based tracking, live bid status, and PDF/Excel reporting for buyers and administrators.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-2">
+                            <span class="tech-tag">Laravel 10</span>
+                            <span class="tech-tag">Livewire 3</span>
+                            <span class="tech-tag">Barcode</span>
+                            <span class="tech-tag">DomPDF</span>
+                        </div>
+                        <p class="text-xs text-slate-500">Internal system · BEVI</p>
+                    </article>
+
+                    <article class="reveal group rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-indigo-400/40 hover:-translate-y-1 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-sky-500/10 flex items-center justify-center mb-5">
+                            <svg class="w-6 h-6 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75M3.75 4.5h16.5c.621 0 1.125.504 1.125 1.125v13.75c0 .621-.504 1.125-1.125 1.125H3.75A1.125 1.125 0 012.625 19.375V5.625c0-.621.504-1.125 1.125-1.125z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 9.75h.75" />
+                            </svg>
+                        </div>
+                        <h3 class="font-display text-lg font-semibold text-white mb-2">Minutes of Meeting (MOM)</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-5">
+                            Tracks meeting topics, discussion points, and action items, with one-click PDF export per meeting for distribution and recordkeeping.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-2">
+                            <span class="tech-tag">Laravel 10</span>
+                            <span class="tech-tag">Livewire 3</span>
+                            <span class="tech-tag">DomPDF</span>
+                        </div>
+                        <p class="text-xs text-slate-500">Internal system · BEVI</p>
                     </article>
                 </div>
             </section>
@@ -379,7 +478,7 @@
             </svg>
         </button>
 
-        <script type="module" src="assets/js/three-background.js"></script>
+        <script type="module" src="assets/js/scroll-scene.js"></script>
         <script src="assets/js/main.js"></script>
     </body>
 </html>
