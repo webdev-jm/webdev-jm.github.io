@@ -1,0 +1,24 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "@popperjs/core": "^2.11.6",
+        "axios": "^1.6.4",
+        "bootstrap": "^5.2.3",
+        "laravel-echo": "^2.3.4",
+        "laravel-vite-plugin": "^1.0.0",
+        "pusher-js": "^8.5.0",
+        "sass": "^1.56.1",
+        "vite": "^5.0.0"
+    },
+    "dependencies": {
+        "@tailwindcss/vite": "^4.1.13",
+        "dexie": "^4.4.2",
+        "orgchart": "^5.0.0",
+        "tailwindcss": "^4.1.13"
+    }
+}

@@ -1,0 +1,134 @@
+@extends('layouts.app')
+
+{{-- Customize layout sections --}}
+@section('subtitle', __('adminlte::users.user_update'))
+@section('content_header_title', __('adminlte::users.users'))
+@section('content_header_subtitle', __('adminlte::users.user_update'))
+
+{{-- Content body: main page content --}}
+@section('content_body')
+    {{ html()->form('POST', route('user.update', encrypt($user->id)))->open() }}
+        <div class="card">
+            <div class="card-header py-2">
+                <div class="row">
+                    <div class="col-lg-6 align-middle">
+                        <strong class="text-lg">{{__('adminlte::users.user_update')}}</strong>
+                    </div>
+                    <div class="col-lg-6 text-right">
+                        <a href="{{route('user.index')}}" class="btn btn-secondary btn-xs">
+                            <i class="fa fa-caret-left"></i>
+                            {{__('adminlte::utilities.back')}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-lg-3">
+                        <livewire:forms.input-text
+                            name="name"
+                            id="name"
+                            value="{{ $user->name }}"
+                            label="{{ __('adminlte::utilities.name') }}"
+                            placeholder="{{ __('adminlte::utilities.name') }}"
+                            size="sm"
+                        />
+                    </div>
+
+                    <div class="col-lg-3">
+                        <livewire:forms.input-email
+                            name="email"
+                            id="email"
+                            value="{{ $user->email }}"
+                            label="{{ __('adminlte::utilities.email') }}"
+                            placeholder="{{ __('adminlte::utilities.email') }}"
+                            size="sm"
+                        />
+                    </div>
+
+                    <div class="col-lg-3">
+                        <livewire:forms.select-field
+                            name="company_id"
+                            id="company_id"
+                            value="{{ $user->company_id }}"
+                            label="{{ __('adminlte::companies.company') }}"
+                            :options="\App\Models\Company::all()"
+                            :searchable="true"
+                            :searchMin="0"
+                            :allowClear="true"
+                            optionValue="id"
+                            optionLabel="name"
+                        />
+                    </div>
+
+                    <div class="col-lg-3">
+                        <livewire:forms.select-field
+                            name="position_id"
+                            id="position_id"
+                            value="{{ $user->position_id }}"
+                            label="{{ __('adminlte::positions.position') }}"
+                            :options="\App\Models\Position::all()"
+                            :searchable="true"
+                            :searchMin="0"
+                            :allowClear="true"
+                            optionValue="id"
+                            optionLabel="position"
+                        />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        {{ html()->label(__('adminlte::roles.roles'), 'role_ids')->class(['mb-0', 'text-danger' => $errors->has('role_ids')]) }}
+                        @if($errors->has('role_ids'))
+                            <span class="badge badge-danger pt-1">{{__('adminlte::utilities.required')}}</span>
+                        @endif
+                        <hr class="mt-0">
+                        {{ html()->hidden('role_ids', implode(',', $user_roles))->id('role_ids')}}
+                    </div>
+
+                    <div class="col-12">
+                        @foreach($roles as $role)
+                            <button class="btn btn-{{in_array($role->name, $user_roles) ? 'success' : 'default'}} btn-role" data-id="{{$role->name}}">{{$role->name}}</button>
+                        @endforeach
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-footer text-right">
+                {{ html()->submit('<i class="fa fa-save"></i> '.__('adminlte::users.save_user'))->class(['btn', 'btn-primary', 'btn-sm']) }}
+            </div>
+        </div>
+    {{ html()->form()->close() }}
+@stop
+
+{{-- Push extra CSS --}}
+@push('css')
+    {{-- Add here extra stylesheets --}}
+    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+@endpush
+
+{{-- Push extra scripts --}}
+@push('js')
+    <script>
+        $(function() {
+            $('body').on('click', '.btn-role', function(e) {
+                e.preventDefault();
+                $(this).toggleClass('btn-success').toggleClass('btn-default');
+
+                // get all selected
+                var role_ids = [];
+                $('body').find('.btn-role').each(function() {
+                    var id = $(this).data('id');
+                    if($(this).hasClass('btn-success')) {
+                        role_ids.push(id);
+                    }
+                });
+
+                var roles = role_ids.join(',');
+                $('#role_ids').val(roles);
+            });
+        })
+    </script>
+@endpush

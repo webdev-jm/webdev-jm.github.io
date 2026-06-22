@@ -1,0 +1,25 @@
+<?php 
+
+return [
+    'user'                  => 'User',
+    'users'                 => 'Users',
+    'user_list'             => 'User List',
+    'new_user'              => 'New User',
+    'save_user'             => 'Save User',
+    'user_update'           => 'User Update',
+    'user_details'          => 'User Details',
+    'user_activities'       => 'User Activities',
+    'profile_picture'       => 'Profile Picture',
+    'user_create_success'   => 'User has been successfully created.',
+    'user_update_success'   => 'User has been successfully updated.',
+    'deleted_users'         => 'Deleted Users',
+    'deleted_at'            => 'Deleted At',
+    'back_to_users'         => 'Back to Users',
+    'recycle_bin_users'     => 'Recycle Bin - Users',
+    'restore_user'          => 'Restore User',
+    'restore'               => 'Restore',
+    'confirm_restore'       => 'Are you sure you want to restore :name?',
+    'permanently_delete'    => 'Permanently Delete',
+    'destroy'               => 'Destroy',
+    'confirm_destroy'       => 'WARNING: This will permanently delete :name and cannot be undone. Are you sure?',
+];
