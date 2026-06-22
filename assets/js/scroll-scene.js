@@ -43,40 +43,19 @@ if (canvas && !prefersReducedMotion) {
     fillLight.position.set(-5, -2, 4);
     scene.add(fillLight);
 
-    const TEXTURED_MATERIAL_NAMES = new Set([
-        'Sphere_Bot',
-        'Sphere_Bot_Leg_Nor',
-        'Sphere_Bot_Sphere_Bot_color_2.png',
-    ]);
-
     const textureLoader = new THREE.TextureLoader();
-    const modelBase = 'assets/models/sphere-bot/';
-    const colorMap = textureLoader.load(modelBase + 'textures/Sphere_Bot_color_2.jpg');
+    const modelBase = 'assets/models/moon/';
+    const colorMap = textureLoader.load(modelBase + 'textures/moon-diffuse.png');
     colorMap.colorSpace = THREE.SRGBColorSpace;
-    const normalMap = textureLoader.load(modelBase + 'textures/Sphere_Bot_nmap.jpg');
-    const metalnessMap = textureLoader.load(modelBase + 'textures/Sphere_Bot_metalness.jpg');
-    const roughnessMap = textureLoader.load(modelBase + 'textures/Sphere_Bot_rough.jpg');
-    const aoMap = textureLoader.load(modelBase + 'textures/Sphere_Bot_ao.jpg');
+    const bumpMap = textureLoader.load(modelBase + 'textures/moon-bump.png');
 
-    function buildBotMaterial() {
+    function buildMoonMaterial() {
         return new THREE.MeshStandardMaterial({
             map: colorMap,
-            normalMap,
-            metalnessMap,
-            roughnessMap,
-            aoMap,
-            metalness: 1,
-            roughness: 1,
-            transparent: true,
-            opacity: 0,
-        });
-    }
-
-    function buildAccentMaterial(color) {
-        return new THREE.MeshStandardMaterial({
-            color,
-            metalness: 0.4,
-            roughness: 0.45,
+            bumpMap,
+            bumpScale: 0.05,
+            metalness: 0,
+            roughness: 0.95,
             transparent: true,
             opacity: 0,
         });
@@ -84,46 +63,28 @@ if (canvas && !prefersReducedMotion) {
 
     const fadeMaterials = [];
 
-    function resolveMaterial(originalName) {
-        if (originalName === 'Material.002') {
-            return buildAccentMaterial(0xcc1f1f);
-        }
-        if (originalName === 'Material') {
-            return buildAccentMaterial(0x14151a);
-        }
-        return buildBotMaterial();
-    }
+    const moonGroup = new THREE.Group();
+    scene.add(moonGroup);
 
-    const botGroup = new THREE.Group();
-    scene.add(botGroup);
-
-    let botModel = null;
+    let moonModel = null;
 
     new OBJLoader().load(
-        modelBase + 'sphere-bot.obj',
+        modelBase + 'moon.obj',
         (object) => {
             object.traverse((child) => {
                 if (!child.isMesh) {
                     return;
                 }
-                if (child.geometry.attributes.uv && !child.geometry.attributes.uv2) {
-                    child.geometry.setAttribute('uv2', child.geometry.attributes.uv);
-                }
-                if (Array.isArray(child.material)) {
-                    child.material = child.material.map((mat) => resolveMaterial(mat.name));
-                } else {
-                    child.material = resolveMaterial(child.material.name);
-                }
+                child.material = buildMoonMaterial();
                 fadeMaterials.push(child.material);
             });
 
-            object.position.set(0, -1, 0);
-            botGroup.add(object);
-            botGroup.scale.setScalar(1.6);
-            botModel = object;
+            moonGroup.add(object);
+            moonGroup.scale.setScalar(1);
+            moonModel = object;
         },
         undefined,
-        (error) => console.error('Failed to load sphere-bot model', error)
+        (error) => console.error('Failed to load moon model', error)
     );
 
     let mouseX = 0;
@@ -155,12 +116,12 @@ if (canvas && !prefersReducedMotion) {
     function animate() {
         const elapsed = clock.getElapsedTime();
 
-        botGroup.rotation.y = elapsed * 0.18 + scrollProgress * Math.PI * 2;
-        botGroup.rotation.x = Math.sin(elapsed * 0.15) * 0.05 + scrollProgress * 0.4;
+        moonGroup.rotation.y = elapsed * 0.18 + scrollProgress * Math.PI * 2;
+        moonGroup.rotation.x = Math.sin(elapsed * 0.15) * 0.05 + scrollProgress * 0.4;
 
-        if (botModel) {
+        if (moonModel) {
             const breath = 1 + Math.sin(elapsed * 0.6) * 0.035;
-            botModel.scale.setScalar(breath);
+            moonModel.scale.setScalar(breath);
         }
 
         fadeMaterials.forEach((material) => {
