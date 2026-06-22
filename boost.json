@@ -1,9 +1,0 @@
-{
-    "agents": [
-        "claude_code"
-    ],
-    "guidelines": true,
-    "packages": [
-        "laravel/ai"
-    ]
-}

@@ -1,9 +1,0 @@
-@import "tailwindcss";
-
-/*
- * Fix: Tailwind v4's .collapse utility sets visibility:collapse, which conflicts
- * with Bootstrap's .navbar-collapse class and hides the topnav menu items.
- */
-.navbar-collapse {
-    visibility: visible;
-}
