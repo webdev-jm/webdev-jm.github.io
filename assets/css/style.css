@@ -63,6 +63,7 @@
     box-shadow:
         inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
         0 0 60px -28px rgba(99, 102, 241, 0.35);
+    will-change: transform, opacity;
 }
 
 .glass-card {
@@ -97,4 +98,92 @@
 ::-webkit-scrollbar-thumb {
     background: #4338ca;
     border-radius: 9999px;
+}
+
+header {
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+header.header-scrolled {
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 12px 30px -18px rgba(0, 0, 0, 0.7);
+}
+
+.hero-stagger > * {
+    opacity: 0;
+    animation: hero-rise 0.7s ease forwards;
+}
+
+.hero-stagger > *:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.hero-stagger > *:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.hero-stagger > *:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.hero-stagger > *:nth-child(4) {
+    animation-delay: 0.55s;
+}
+
+.hero-stagger > *:nth-child(5) {
+    animation-delay: 0.7s;
+}
+
+@keyframes hero-rise {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-scroll-cue {
+    opacity: 0;
+    animation: cue-fade-in 0.8s ease 1.1s forwards, float 4s ease-in-out infinite 1.9s;
+}
+
+@keyframes cue-fade-in {
+    to {
+        opacity: 1;
+    }
+}
+
+#mobile-menu {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
+}
+
+#mobile-menu.menu-open {
+    max-height: 24rem;
+    opacity: 1;
+}
+
+#nav-toggle svg {
+    transition: transform 0.3s ease;
+}
+
+#nav-toggle.menu-open svg {
+    transform: rotate(90deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-stagger > *,
+    .hero-scroll-cue,
+    .reveal,
+    .reveal.is-visible {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
 }

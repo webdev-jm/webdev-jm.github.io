@@ -16,16 +16,42 @@ if (canvas && !prefersReducedMotion) {
 
     const particleCount = window.innerWidth < 768 ? 350 : 900;
     const positions = new Float32Array(particleCount * 3);
+    const particleOriginDistances = new Float32Array(particleCount);
     for (let i = 0; i < particleCount; i++) {
-        positions[i * 3] = (Math.random() - 0.5) * 22;
-        positions[i * 3 + 1] = (Math.random() - 0.5) * 22;
-        positions[i * 3 + 2] = (Math.random() - 0.5) * 22;
+        const x = (Math.random() - 0.5) * 22;
+        const y = (Math.random() - 0.5) * 22;
+        const z = (Math.random() - 0.5) * 22;
+        positions[i * 3] = x;
+        positions[i * 3 + 1] = y;
+        positions[i * 3 + 2] = z;
+        particleOriginDistances[i] = Math.sqrt(x * x + y * y + z * z);
     }
+    const particleColors = new Float32Array(particleCount * 3);
+    function createDiscTexture() {
+        const size = 64;
+        const discCanvas = document.createElement('canvas');
+        discCanvas.width = size;
+        discCanvas.height = size;
+        const ctx = discCanvas.getContext('2d');
+        const gradient = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+        gradient.addColorStop(0.4, 'rgba(255, 255, 255, 0.6)');
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, size, size);
+        return new THREE.CanvasTexture(discCanvas);
+    }
+
     const particlesGeometry = new THREE.BufferGeometry();
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    particlesGeometry.setAttribute('color', new THREE.BufferAttribute(particleColors, 3).setUsage(THREE.DynamicDrawUsage));
     const particlesMaterial = new THREE.PointsMaterial({
         size: 0.045,
         color: 0x818cf8,
+        map: createDiscTexture(),
+        vertexColors: true,
+        alphaTest: 0.01,
+        depthWrite: false,
         transparent: true,
         opacity: 0.7,
     });
@@ -112,6 +138,13 @@ if (canvas && !prefersReducedMotion) {
 
     const clock = new THREE.Clock();
     const tmpColor = new THREE.Color();
+    const localCameraPosition = new THREE.Vector3();
+    const inverseParticlesQuaternion = new THREE.Quaternion();
+    const moonExclusionRadius = 2.4;
+    const cameraExclusionRadius = 2.5;
+    const farBrightnessRadius = 15;
+    const minBrightness = 0.3;
+    const maxBrightness = 1.4;
 
     function animate() {
         const elapsed = clock.getElapsedTime();
@@ -140,6 +173,29 @@ if (canvas && !prefersReducedMotion) {
         camera.position.y += (-mouseY * 1.2 - camera.position.y - scrollProgress * 1.5) * 0.03;
         camera.position.z = 8 - scrollProgress * 1.5;
         camera.lookAt(scene.position);
+
+        inverseParticlesQuaternion.copy(particles.quaternion).invert();
+        localCameraPosition.copy(camera.position).applyQuaternion(inverseParticlesQuaternion);
+
+        const colorArray = particlesGeometry.attributes.color.array;
+        for (let i = 0; i < particleCount; i++) {
+            const ix = i * 3;
+            const dx = positions[ix] - localCameraPosition.x;
+            const dy = positions[ix + 1] - localCameraPosition.y;
+            const dz = positions[ix + 2] - localCameraPosition.z;
+            const distanceToCamera = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+            let brightness = 0;
+            if (particleOriginDistances[i] >= moonExclusionRadius && distanceToCamera >= cameraExclusionRadius) {
+                const t = THREE.MathUtils.clamp(distanceToCamera / farBrightnessRadius, 0, 1);
+                brightness = THREE.MathUtils.lerp(minBrightness, maxBrightness, t);
+            }
+
+            colorArray[ix] = brightness;
+            colorArray[ix + 1] = brightness;
+            colorArray[ix + 2] = brightness;
+        }
+        particlesGeometry.attributes.color.needsUpdate = true;
 
         renderer.render(scene, camera);
         requestAnimationFrame(animate);

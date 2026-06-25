@@ -1,20 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const navToggle = document.getElementById('nav-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
 
     navToggle?.addEventListener('click', () => {
-        const isHidden = mobileMenu.classList.toggle('hidden');
-        navToggle.setAttribute('aria-expanded', isHidden ? 'false' : 'true');
+        const isOpen = mobileMenu.classList.toggle('menu-open');
+        navToggle.classList.toggle('menu-open', isOpen);
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
     mobileMenu?.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('menu-open');
+            navToggle?.classList.remove('menu-open');
+            navToggle?.setAttribute('aria-expanded', 'false');
+        });
     });
 
     const revealObserver = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
+                    const siblings = Array.from(entry.target.parentElement?.children ?? []).filter((el) =>
+                        el.classList.contains('reveal')
+                    );
+                    const index = Math.max(siblings.indexOf(entry.target), 0);
+                    entry.target.style.transitionDelay = `${Math.min(index, 5) * 90}ms`;
                     entry.target.classList.add('is-visible');
                 }
             });
@@ -43,11 +55,41 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('section[id]').forEach((section) => navObserver.observe(section));
 
     const backToTop = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => {
-        const isVisible = window.scrollY > 400;
-        backToTop?.classList.toggle('opacity-0', !isVisible);
-        backToTop?.classList.toggle('pointer-events-none', !isVisible);
-    });
+    const header = document.querySelector('header');
+    const heroCard = document.querySelector('#hero .glass-panel');
+
+    let ticking = false;
+    const updateScrollEffects = () => {
+        const scrollY = window.scrollY;
+
+        const isPastTop = scrollY > 400;
+        backToTop?.classList.toggle('opacity-0', !isPastTop);
+        backToTop?.classList.toggle('pointer-events-none', !isPastTop);
+
+        header?.classList.toggle('header-scrolled', scrollY > 40);
+
+        if (heroCard && !prefersReducedMotion) {
+            const fade = Math.min(scrollY / 600, 1);
+            heroCard.style.transform = `translateY(${scrollY * 0.15}px)`;
+            heroCard.style.opacity = `${1 - fade}`;
+        }
+    };
+
+    window.addEventListener(
+        'scroll',
+        () => {
+            if (!ticking) {
+                ticking = true;
+                requestAnimationFrame(() => {
+                    updateScrollEffects();
+                    ticking = false;
+                });
+            }
+        },
+        { passive: true }
+    );
+    updateScrollEffects();
+
     backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
     const copyEmailBtn = document.getElementById('copy-email');
@@ -73,13 +115,15 @@ document.addEventListener('DOMContentLoaded', () => {
         projectsViewMore.addEventListener('click', () => {
             const expanding = projectsViewMore.dataset.expanded !== 'true';
 
-            extraProjects.forEach((el) => {
+            extraProjects.forEach((el, index) => {
                 if (expanding) {
+                    el.style.transitionDelay = `${index * 90}ms`;
                     el.classList.remove('hidden');
                     requestAnimationFrame(() => el.classList.add('is-visible'));
                 } else {
-                    el.classList.add('hidden');
+                    el.style.transitionDelay = '0ms';
                     el.classList.remove('is-visible');
+                    setTimeout(() => el.classList.add('hidden'), 600);
                 }
             });
 
