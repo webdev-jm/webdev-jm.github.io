@@ -69,11 +69,13 @@
 .glass-card {
     background-color: rgba(255, 255, 255, 0.05);
     box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
 }
 
 .glass-card:hover {
     background-color: rgba(255, 255, 255, 0.07);
+    transform: translateY(-4px);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 20px 40px -24px rgba(0, 0, 0, 0.6);
 }
 
 .tech-tag {
@@ -134,6 +136,10 @@ header.header-scrolled {
     animation-delay: 0.7s;
 }
 
+.hero-stagger > *:nth-child(6) {
+    animation-delay: 0.85s;
+}
+
 @keyframes hero-rise {
     from {
         opacity: 0;
@@ -154,6 +160,32 @@ header.header-scrolled {
     to {
         opacity: 1;
     }
+}
+
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, #818cf8, #f472b6);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+.nav-link.is-active::after {
+    transform: scaleX(1);
+}
+
+#scroll-progress {
+    transition: transform 0.15s ease-out;
 }
 
 #mobile-menu {
@@ -185,5 +217,13 @@ header.header-scrolled {
         transition: none !important;
         opacity: 1 !important;
         transform: none !important;
+    }
+
+    .glass-card:hover {
+        transform: none;
+    }
+
+    #scroll-progress {
+        transition: none;
     }
 }

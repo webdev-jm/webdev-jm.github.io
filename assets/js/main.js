@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const isActive = link.dataset.section === entry.target.id;
                         link.classList.toggle('text-white', isActive);
                         link.classList.toggle('text-slate-400', !isActive);
+                        link.classList.toggle('is-active', isActive);
                     });
                 }
             });
@@ -57,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const backToTop = document.getElementById('back-to-top');
     const header = document.querySelector('header');
     const heroCard = document.querySelector('#hero .glass-panel');
+    const scrollProgressBar = document.getElementById('scroll-progress');
 
     let ticking = false;
     const updateScrollEffects = () => {
@@ -72,6 +74,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const fade = Math.min(scrollY / 600, 1);
             heroCard.style.transform = `translateY(${scrollY * 0.15}px)`;
             heroCard.style.opacity = `${1 - fade}`;
+        }
+
+        if (scrollProgressBar) {
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = maxScroll > 0 ? Math.min(Math.max(scrollY / maxScroll, 0), 1) : 0;
+            scrollProgressBar.style.transform = `scaleX(${progress})`;
         }
     };
 
