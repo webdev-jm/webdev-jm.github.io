@@ -101,18 +101,33 @@ document.addEventListener('DOMContentLoaded', () => {
     backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
     const copyEmailBtn = document.getElementById('copy-email');
-    copyEmailBtn?.addEventListener('click', async () => {
-        try {
-            await navigator.clipboard.writeText('mr.michaelrenon@gmail.com');
-            const original = copyEmailBtn.textContent;
-            copyEmailBtn.textContent = 'Copied!';
-            setTimeout(() => {
-                copyEmailBtn.textContent = original;
-            }, 1800);
-        } catch {
-            window.location.href = 'mailto:mr.michaelrenon@gmail.com';
-        }
-    });
+    const copyEmailStatus = document.getElementById('copy-email-status');
+    if (copyEmailBtn) {
+        /* Read the idle label once. Reading it inside the handler meant a second
+           click within the restore window captured 'Copied!' as the label to
+           restore, and the button never said 'Copy Email' again. */
+        const idleLabel = copyEmailBtn.textContent.trim();
+        let restoreTimer;
+
+        copyEmailBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText('mr.michaelrenon@gmail.com');
+                clearTimeout(restoreTimer);
+                copyEmailBtn.textContent = 'Copied!';
+                if (copyEmailStatus) {
+                    copyEmailStatus.textContent = 'Email address copied to clipboard';
+                }
+                restoreTimer = setTimeout(() => {
+                    copyEmailBtn.textContent = idleLabel;
+                    if (copyEmailStatus) {
+                        copyEmailStatus.textContent = '';
+                    }
+                }, 1800);
+            } catch {
+                window.location.href = 'mailto:mr.michaelrenon@gmail.com';
+            }
+        });
+    }
 
     const projectsViewMore = document.getElementById('projects-view-more');
     const extraProjects = document.querySelectorAll('.project-extra');

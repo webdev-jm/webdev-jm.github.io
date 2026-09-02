@@ -66,16 +66,57 @@
     will-change: transform, opacity;
 }
 
+/* Cards sit directly over the animated moon, so the base is a dark veil rather
+   than a white tint — otherwise small slate text competes with the lunar
+   texture. The blur is only a bonus; the opaque-ish fallback below carries the
+   contrast on browsers without backdrop-filter. */
 .glass-card {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(10, 13, 24, 0.82);
     box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
     transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
 }
 
 .glass-card:hover {
-    background-color: rgba(255, 255, 255, 0.07);
+    background-color: rgba(16, 20, 34, 0.88);
     transform: translateY(-4px);
     box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 20px 40px -24px rgba(0, 0, 0, 0.6);
+}
+
+@supports ((backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px))) {
+    .glass-card {
+        background-color: rgba(10, 13, 24, 0.62);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+    }
+
+    .glass-card:hover {
+        background-color: rgba(16, 20, 34, 0.7);
+    }
+}
+
+/* Section headings sit on the bare page, so the moon can drift directly behind
+   them. The shadow is invisible against the dark background and only earns its
+   keep when something bright passes underneath. */
+main > section > .reveal h2,
+main > section > .reveal span,
+footer p,
+footer a {
+    text-shadow: 0 1px 10px rgba(5, 7, 13, 0.85);
+}
+
+/* Case-study quadrants: a hairline rule per block, with the outcome accented
+   so the payoff reads as the conclusion rather than a fourth paragraph. */
+.case-grid > div {
+    padding-left: 1rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.case-grid > div:last-child {
+    border-left-color: rgba(129, 140, 248, 0.45);
+}
+
+.case-grid > div:last-child p:last-child {
+    color: #cbd5e1;
 }
 
 .tech-tag {
@@ -177,11 +218,24 @@ header.header-scrolled {
     background: linear-gradient(90deg, #818cf8, #f472b6);
     transform: scaleX(0);
     transform-origin: center;
-    transition: transform 0.3s ease;
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    opacity: 0.45;
 }
 
 .nav-link.is-active::after {
     transform: scaleX(1);
+    opacity: 1;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #818cf8;
+    outline-offset: 3px;
 }
 
 #scroll-progress {
